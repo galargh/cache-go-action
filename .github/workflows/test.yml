@@ -1,0 +1,19 @@
+name: Test
+on: [push]
+jobs:
+  Use-Action:
+    name: Use Action
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        go: ["1.16.x", "1.17.x"]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: go-cache-action
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+      - uses: ./go-cache-action
