@@ -12,8 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          path: go-cache-action
+          path: cache-go-action
       - uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go }}
-      - uses: ./go-cache-action
+      - uses: ./cache-go-action

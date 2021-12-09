@@ -1,4 +1,4 @@
-name: 'Go Cache'
+name: 'Cache Go'
 description: 'Cache Go modules'
 runs:
   using: "composite"
