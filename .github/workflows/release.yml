@@ -1,0 +1,16 @@
+name: Release
+on: [push]
+jobs:
+  Use-Action:
+    name: Use Action
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+      fail-fast: false
+      max-parallel: 1
+    steps:
+      - run: sleep 10
+        shell: bash
+      - run: exit 1
+        shell: bash
