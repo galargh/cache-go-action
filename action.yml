@@ -1,5 +1,10 @@
 name: 'Cache Go'
 description: 'Cache Go modules'
+inputs:
+  name:
+    description: 'The name that is going to be used as a part of the cache keys' 
+    required: true
+    default: 'go'
 runs:
   using: "composite"
   steps:
@@ -9,24 +14,24 @@ runs:
         path: |
           ~/.cache/go-build
           ~/go/pkg/mod
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        key: ${{ runner.os }}-${{ inputs.name }}-${{ hashFiles('**/go.sum') }}
         restore-keys: |
-          ${{ runner.os }}-go-
+          ${{ runner.os }}-${{ inputs.name }}-
     - if: ${{ runner.os == 'macOS' }}
       uses: actions/cache@v2
       with:
         path: |
           ~/Library/Caches/go-build
           ~/go/pkg/mod
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        key: ${{ runner.os }}-${{ inputs.name }}-${{ hashFiles('**/go.sum') }}
         restore-keys: |
-          ${{ runner.os }}-go-
+          ${{ runner.os }}-${{ inputs.name }}-
     - if: ${{ runner.os == 'Windows' }}
       uses: actions/cache@v2
       with:
         path: |
           %LocalAppData%\go-build
           ~/go/pkg/mod
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        key: ${{ runner.os }}-${{ inputs.name }}-${{ hashFiles('**/go.sum') }}
         restore-keys: |
-          ${{ runner.os }}-go-
+          ${{ runner.os }}-${{ inputs.name }}-
