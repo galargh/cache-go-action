@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2021-12-14
+### Added
+- input `name` which is going to be used as part of the cache keys
+
 ## [1.0.0] - 2021-12-14
 ### Added
 - action that enables [Go - modules cache](https://github.com/actions/cache/blob/main/examples.md#go---modules) on any type of runner
