@@ -2,14 +2,14 @@ name: 'Cache Go'
 description: 'Cache Go modules'
 inputs:
   name:
-    description: 'The name that is going to be used as a part of the cache keys' 
+    description: 'The name that is going to be used as a part of the cache keys'
     required: true
     default: 'go'
 runs:
   using: "composite"
   steps:
     - if: ${{ runner.os == 'Linux' }}
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           ~/.cache/go-build
@@ -18,7 +18,7 @@ runs:
         restore-keys: |
           ${{ runner.os }}-${{ inputs.name }}-
     - if: ${{ runner.os == 'macOS' }}
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           ~/Library/Caches/go-build
@@ -27,7 +27,7 @@ runs:
         restore-keys: |
           ${{ runner.os }}-${{ inputs.name }}-
     - if: ${{ runner.os == 'Windows' }}
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           %LocalAppData%\go-build
